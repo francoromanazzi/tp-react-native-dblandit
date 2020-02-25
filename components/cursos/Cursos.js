@@ -7,9 +7,10 @@ import { getCursos } from '../../redux/actions/cursos'
 
 import MainTitle from './MainTitle'
 import CursosItem from './CursosItem'
+import CursosFilter from './CursosFilter'
 import SnackbarDeleteCurso from './SnackbarDeleteCurso'
 
-export class Cursos extends Component {
+class Cursos extends Component {
     styles = StyleSheet.create({
         container: {
           marginTop: Constants.statusBarHeight,
@@ -27,9 +28,10 @@ export class Cursos extends Component {
             <View style={this.styles.container}>
                 <ScrollView>
                     <MainTitle />
+                    <CursosFilter />
                     {cursos && cursos.map(curso => <CursosItem key={curso._id} curso={curso} />)}
                 </ScrollView>
-                <SnackbarDeleteCurso/>    
+                <SnackbarDeleteCurso />    
             </View>
         )
     }
