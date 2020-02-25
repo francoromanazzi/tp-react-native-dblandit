@@ -21,7 +21,7 @@ export const getCursos = (anio, duracion) => dispatch => {
             });
         })
         .catch(err => {
-            console.error(err);
+            console.log(err);
             dispatch({
                 type: 'GET_ERRORS',
                 payload: { error: err.response.data }
@@ -40,7 +40,7 @@ export const deleteCurso = cursoId => dispatch => {
             });
         })
         .catch(err => {
-            console.error(err);
+            console.log(err);
             dispatch({
                 type: 'GET_ERRORS',
                 payload: { error: err.response.data }
@@ -62,7 +62,7 @@ export const postCurso = (curso, history) => dispatch => {
             });
         })
         .catch(err => {
-            console.error(err);
+            console.log(err);
             dispatch({
                 type: 'GET_ERRORS',
                 payload: { error: err.response.data }

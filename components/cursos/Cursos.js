@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import Constants from 'expo-constants';
 import { connect } from 'react-redux'
 
@@ -21,16 +21,26 @@ class Cursos extends Component {
         this.props.getCursos();
     }
 
+    renderCursosItem = ({ item }) => (<CursosItem key={item._id} curso={item} />)
+
+    keyExtractor = item => item._id
+
+    renderHeader = () => (<View>
+        <MainTitle />
+        <CursosFilter />
+    </View>)
+
     render() {
         const { cursos: { cursos } } = this.props;
 
         return (
             <View style={this.styles.container}>
-                <ScrollView>
-                    <MainTitle />
-                    <CursosFilter />
-                    {cursos && cursos.map(curso => <CursosItem key={curso._id} curso={curso} />)}
-                </ScrollView>
+                    <FlatList
+                        data={cursos}
+                        renderItem={this.renderCursosItem}
+                        keyExtractor={this.keyExtractor}
+                        ListHeaderComponent={this.renderHeader}
+                    />
                 <SnackbarDeleteCurso />    
             </View>
         )

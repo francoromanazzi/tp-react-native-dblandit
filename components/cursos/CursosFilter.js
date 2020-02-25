@@ -4,6 +4,7 @@ import { StyleSheet ,View } from 'react-native'
 import { TextInput } from 'react-native-paper'
 
 import { getCursos } from '../../redux/actions/cursos'
+import getErrorForParam from '../../utils/getErrorForParam'
 
 class CursosFilter extends Component {
     state = {
@@ -22,22 +23,30 @@ class CursosFilter extends Component {
 
     render() {
         const { anio, duracion } = this.state;
+        const { errors } = this.props;
+
+        const errores = {
+            anioDictado: getErrorForParam(errors, 'anioDictado'),
+            duracion: getErrorForParam(errors, 'duracion')
+        }
 
         return (
             <View style={styles.container}>
                 <TextInput
-                    label='Año'
+                    label={errores.anioDictado || 'Año'}
                     value={anio}
                     onChangeText={this.handleChange.bind(this, 'anio')}
                     style={styles.input}
                     dense
+                    error={!!errores.anioDictado}
                 />
                 <TextInput
-                    label='Duracion (hs)'
+                    label={errores.duracion || 'Duracion (hs)'}
                     value={duracion}
                     onChangeText={this.handleChange.bind(this, 'duracion')}
                     style={styles.input}
                     dense
+                    error={!!errores.duracion}
                 />
             </View>
         )
