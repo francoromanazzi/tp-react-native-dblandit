@@ -5,6 +5,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { MaterialIcons, MaterialCommunityIcons } from 'react-native-vector-icons';
 
 import Cursos from '../cursos/Cursos'
+import AddCurso from '../addCurso/AddCurso'
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -27,7 +28,7 @@ function Navigation({ theme }) {
             />
             <Tab.Screen
               name="Agregar"
-              component={Cursos}
+              component={AddCurso}
               options={{
                 tabBarIcon: ({ color, size }) => (
                   <MaterialCommunityIcons name="plus" color={color} size={22} />

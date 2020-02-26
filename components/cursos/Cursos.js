@@ -11,12 +11,6 @@ import CursosFilter from './CursosFilter'
 import SnackbarDeleteCurso from './SnackbarDeleteCurso'
 
 class Cursos extends Component {
-    styles = StyleSheet.create({
-        container: {
-          marginTop: Constants.statusBarHeight,
-        }
-    });
-
     componentDidMount() {
         this.props.getCursos();
     }
@@ -34,18 +28,24 @@ class Cursos extends Component {
         const { cursos: { cursos } } = this.props;
 
         return (
-            <View style={this.styles.container}>
-                    <FlatList
-                        data={cursos}
-                        renderItem={this.renderCursosItem}
-                        keyExtractor={this.keyExtractor}
-                        ListHeaderComponent={this.renderHeader}
-                    />
+            <View style={styles.container}>
+                <FlatList
+                    data={cursos}
+                    renderItem={this.renderCursosItem}
+                    keyExtractor={this.keyExtractor}
+                    ListHeaderComponent={this.renderHeader}
+                />
                 <SnackbarDeleteCurso />    
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+      marginTop: Constants.statusBarHeight,
+    }
+});
 
 const mapStateToProps = (state) => ({
     cursos: state.cursos

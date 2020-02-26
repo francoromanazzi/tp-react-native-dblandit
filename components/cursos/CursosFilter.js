@@ -39,6 +39,7 @@ class CursosFilter extends Component {
                     style={styles.input}
                     dense
                     error={!!errores.anioDictado}
+                    placeholder="Año"
                 />
                 <TextInput
                     label={errores.duracion || 'Duracion (hs)'}
@@ -47,6 +48,7 @@ class CursosFilter extends Component {
                     style={styles.input}
                     dense
                     error={!!errores.duracion}
+                    placeholder="Duracion (hs)"
                 />
             </View>
         )
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    errors: state.errors.errors
+    errors: state.errors.getCursos
 })
 
 export default connect(mapStateToProps, { getCursos })(CursosFilter)

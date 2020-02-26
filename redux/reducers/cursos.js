@@ -1,6 +1,7 @@
 const initialState = {
     cursos: [],
-    cursoBorrado: {}
+    cursoBorrado: {},
+    cursoAgregado: {}
 }
 
 const cursosReducer = (state = initialState, action) => {
@@ -19,7 +20,18 @@ const cursosReducer = (state = initialState, action) => {
         case 'ADD_CURSO':
             return {
                 ...state,
-                cursos: [...state.cursos, action.payload]
+                cursos: [...state.cursos, action.payload],
+                cursoAgregado: action.payload
+            }
+        case 'CLEAR_CURSO_BORRADO':
+            return {
+                ...state,
+                cursoBorrado: {}
+            }
+        case 'CLEAR_CURSO_AGREGADO':
+            return {
+                ...state,
+                cursoAgregado: {}
             }
         default:
             return state

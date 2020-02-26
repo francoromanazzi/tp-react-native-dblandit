@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         padding: 12,
         margin: 8,
         width: '85%',
-        elevation: 3,
+        elevation: 2,
     },
     row: {
         flex: 1,

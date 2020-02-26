@@ -2,14 +2,11 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { withTheme, Text } from 'react-native-paper'
 
-function MainTitle({ theme }) {
+function MainTitle() {
     return (
         <View style={styles.container}> 
             <Text style={styles.title}>
-                Cursos{' '}     
-                    <Text style={{ ...styles.title, color: theme.colors.accent }}>DB</Text>
-                    land
-                    <Text style={{ ...styles.title, color: theme.colors.accent }}>IT</Text>
+                Agregar curso
             </Text>
         </View>
     )
@@ -28,4 +25,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default withTheme(MainTitle)
+export default MainTitle

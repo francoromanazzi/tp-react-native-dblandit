@@ -3,27 +3,27 @@ import { connect } from 'react-redux'
 import { StyleSheet, View } from 'react-native'
 import { Snackbar } from 'react-native-paper';
 
-import { postCurso, clearCursoBorrado } from '../../redux/actions/cursos'
+import { deleteCurso, clearCursoAgregado } from '../../redux/actions/cursos'
 import isEmpty from '../../utils/isEmpty'
 
-class SnackbarDeleteCurso extends Component {
+class SnackbarAddCurso extends Component {
     state = {
         visible: false
     }
 
     handleUndoPress = () => {
-        this.props.postCurso(this.props.cursoBorrado)
+        this.props.deleteCurso(this.props.cursoAgregado._id)
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        if(!isEmpty(nextProps.cursoBorrado)) {
+    UNSAFE_componentWillReceiveProps = (nextProps) => {
+        if(!isEmpty(nextProps.cursoAgregado)) {
             this.setState({ visible: true })
         }
     }
 
     handleDismiss = () => {
         this.setState({ visible: false }, () => {
-            this.props.clearCursoBorrado()
+            this.props.clearCursoAgregado()
         })
     }
     
@@ -40,7 +40,7 @@ class SnackbarDeleteCurso extends Component {
                     onPress: this.handleUndoPress
                 }}
             >
-            Curso borrado correctamente
+            Curso creado correctamente
             </Snackbar>
           </View>
         );
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    cursoBorrado: state.cursos.cursoBorrado
+    cursoAgregado: state.cursos.cursoAgregado
 })
 
-export default connect(mapStateToProps, { postCurso, clearCursoBorrado })(SnackbarDeleteCurso)
+export default connect(mapStateToProps, { deleteCurso, clearCursoAgregado })(SnackbarAddCurso)
