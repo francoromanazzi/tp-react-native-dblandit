@@ -51,3 +51,8 @@ export const setCurrentUser = decoded => {
       payload: decoded
     };
 };
+
+export const logoutUser = () => async dispatch => {
+    await AsyncStorage.removeItem('@jwtToken')
+    dispatch(setCurrentUser({}));
+}

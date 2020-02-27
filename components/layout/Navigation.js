@@ -8,21 +8,33 @@ import { MaterialIcons, MaterialCommunityIcons } from 'react-native-vector-icons
 import Cursos from '../cursos/Cursos'
 import AddCurso from '../addCurso/AddCurso'
 import Login from '../login/Login'
+import Perfil from '../perfil/Perfil'
 
 const Tab = createMaterialBottomTabNavigator();
 
 function Navigation({ theme, isAuthenticated }) {
 
     const authRoutes = (
+      <React.Fragment>
         <Tab.Screen
-        name="Agregar"
-        component={AddCurso}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="plus" color={color} size={22} />
-          ),
-        }}
-      />
+          name="Agregar"
+          component={AddCurso}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="plus" color={color} size={22} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Perfil"
+          component={Perfil}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons name="person" color={color} size={22} />
+            ),
+          }}
+        />
+      </React.Fragment>
     )
 
     const guestRoutes = (
