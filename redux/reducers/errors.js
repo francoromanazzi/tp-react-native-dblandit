@@ -1,7 +1,8 @@
 const initialState = {
     getCursos: [],
     deleteCurso: [],
-    addCurso: []
+    addCurso: [],
+    login: []
 }
 
 const errorReducer = (state = initialState, action) => {
@@ -20,7 +21,12 @@ const errorReducer = (state = initialState, action) => {
             return {
                 ...state,
                 deleteCurso: action.payload.error.message
-            }           
+            }   
+        case 'GET_ERRORS_LOGIN':
+            return {
+                ...state,
+                login: action.payload.error.message
+            }          
         case 'CLEAR_ERRORS_GET_CURSOS':
             return {
                 ...state,
@@ -30,6 +36,11 @@ const errorReducer = (state = initialState, action) => {
             return {
                 ...state,
                 addCurso: []
+            }
+        case 'CLEAR_ERRORS_LOGIN':
+            return {
+                ...state,
+                login: []
             }
         default:
             return state

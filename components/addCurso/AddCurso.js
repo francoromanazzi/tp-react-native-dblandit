@@ -10,7 +10,7 @@ import { postCurso } from '../../redux/actions/cursos'
 
 import SnackbarAddCurso from './SnackbarAddCurso'
 import MainTitle from './MainTitle'
-import AddAlumnos from './AddAlumnos'
+import AddAlumnos from './addAlumnos/AddAlumnos'
 
 export class AddCurso extends Component {
     state = {

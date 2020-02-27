@@ -4,7 +4,7 @@ import { StyleSheet, View, } from 'react-native'
 import { Surface, TextInput, TouchableRipple, Text } from 'react-native-paper'
 import { MaterialIcons } from 'react-native-vector-icons';
 
-import getErrorForParam from '../../utils/getErrorForParam'
+import getErrorForParam from '../../../utils/getErrorForParam'
 
 class AddAlumnosItem extends Component {
     state = {

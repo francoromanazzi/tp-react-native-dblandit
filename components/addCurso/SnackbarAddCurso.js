@@ -39,6 +39,7 @@ class SnackbarAddCurso extends Component {
                     label: 'Deshacer',
                     onPress: this.handleUndoPress
                 }}
+                duration={2000}
             >
             Curso creado correctamente
             </Snackbar>

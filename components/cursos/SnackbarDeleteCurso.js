@@ -39,6 +39,7 @@ class SnackbarDeleteCurso extends Component {
                     label: 'Deshacer',
                     onPress: this.handleUndoPress
                 }}
+                duration={2000}
             >
             Curso borrado correctamente
             </Snackbar>

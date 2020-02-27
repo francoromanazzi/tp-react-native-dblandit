@@ -6,19 +6,21 @@ import { MaterialIcons } from 'react-native-vector-icons';
 
 import { deleteCurso } from '../../redux/actions/cursos'
 
-import Alumnos from './Alumnos'
+import Alumnos from './alumnos/Alumnos'
 
-function CursosItem({ curso, deleteCurso }) {
+function CursosItem({ curso, deleteCurso, isAuthenticated }) {
     return (
         <View style={styles.container}>
             <Surface style={styles.surface}>
                 <View style={styles.row}>
                     <Title>{curso.tema} ({curso.anioDictado})</Title>
-                    <TouchableRipple
-                        onPress={deleteCurso.bind(this, curso._id)}
-                    >
-                        <MaterialIcons name="delete" size={18} style={styles.deleteIcon}/>
-                    </TouchableRipple>
+                    {isAuthenticated && (
+                        <TouchableRipple
+                            onPress={deleteCurso.bind(this, curso._id)}
+                        >
+                            <MaterialIcons name="delete" size={18} style={styles.deleteIcon}/>
+                        </TouchableRipple>
+                    )}
                 </View>
                 <Caption>{curso.duracion} horas</Caption>
                 <Alumnos alumnos={curso.alumnos}/>
@@ -49,4 +51,8 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null, { deleteCurso })(CursosItem)
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, { deleteCurso })(CursosItem)
