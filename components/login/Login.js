@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
         marginTop: Constants.statusBarHeight,
         flex: 1,
         alignItems: 'center',
+        justifyContent: 'center'
     },
     title:  {
         marginVertical: 12,

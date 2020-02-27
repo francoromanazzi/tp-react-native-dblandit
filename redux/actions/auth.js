@@ -1,14 +1,15 @@
+import { apiUrl } from '../../config.json'
+
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { AsyncStorage } from 'react-native'
 
 import setAuthToken from '../../utils/setAuthToken'
 
-const baseUrl = 'http://192.168.0.36:8080'
 
 export const loginUser = userData => dispatch => {
     axios
-        .post(baseUrl + '/api/v1/auth/login', userData)
+        .post(apiUrl + '/api/v1/auth/login', userData)
         .then(async res => {
             console.log(res);
 

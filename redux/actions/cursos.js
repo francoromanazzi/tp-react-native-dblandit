@@ -1,9 +1,10 @@
+import { apiUrl } from '../../config.json'
+
 import axios from 'axios';
 
-const baseUrl = 'http://192.168.0.36:8080'
 
 export const getCursos = (anio, duracion) => dispatch => {
-    let url = baseUrl + '/api/v1/cursos';
+    let url = apiUrl + '/api/v1/cursos';
     if (anio && duracion) url += `?anioDictado=${anio}&duracion=${duracion}`
     else if (anio) url += `?anioDictado=${anio}`
     else if (duracion) url += `?duracion=${duracion}`
@@ -31,7 +32,7 @@ export const getCursos = (anio, duracion) => dispatch => {
 
 export const deleteCurso = cursoId => dispatch => {
     axios
-        .delete(baseUrl + `/api/v1/cursos/${cursoId}`)
+        .delete(apiUrl + `/api/v1/cursos/${cursoId}`)
         .then(res => {
             console.log(res);
             dispatch({
@@ -50,7 +51,7 @@ export const deleteCurso = cursoId => dispatch => {
 
 export const postCurso = (curso, history) => dispatch => {
     axios
-        .post(baseUrl + '/api/v1/cursos/', curso)
+        .post(apiUrl + '/api/v1/cursos/', curso)
         .then(res => {
             console.log(res);
             dispatch({
